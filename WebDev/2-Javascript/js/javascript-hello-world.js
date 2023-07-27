@@ -4,4 +4,5 @@ function getName(){
 }
 function sayhello(nameOfUser){
     alert("Hello " + nameOfUser + " !");
+    console.log("Alert Showed!")
 }
