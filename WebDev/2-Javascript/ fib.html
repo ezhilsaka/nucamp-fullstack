@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Sequence</title>
+</head>
+<body>
+    <h1>Fibonacci Series</h1>
+    <h2>Check Console log for Series</h2>
+    <script>
+        let n = prompt("Enter the numbers you need in Fibonacci series");
+        let a = 0;
+        let b = 1;
+        let count = 2;  
+        console.log(a);
+        console.log(b); 
+        while(count < n){
+            temp = a + b ;
+            console.log(temp);
+            a = b; 
+            b = temp; 
+            count++
+        }
+    </script>
+</body>
+</html>
