@@ -35,6 +35,86 @@
             //console.log("first number after assignment", first_number);
             //console.log("second number after assignment", second_number);
         }
+        /* Fibonacci Code Challenge
+
+        Fibonacci sequence until a limit: Modify the Fibonacci program to print the Fibonacci numbers that are less than a given number, which we'll call n. Instead of stopping the loop after a certain count of numbers, you'd stop it when the next number in the sequence is greater than n.
+
+        Even Fibonacci numbers: Modify the Fibonacci program to print only the even numbers in the Fibonacci sequence. You'll need to add an if statement within your loop to check if the current number is even before printing it.
+
+        Fibonacci Sequence Sum: Instead of printing the Fibonacci sequence, calculate the sum of the first n Fibonacci numbers.
+
+        Fibonacci Checker: Write a function that accepts a number n and checks if it is a Fibonacci number. If it is, return "The number is a Fibonacci number". If it isn't, return "The number is not a Fibonacci number".
+
+        */
+        function fibonacciUntilLimit() {
+        // your code here
+        let a = 0;
+        let b = 1;
+        let n = prompt("Enter the Until Limit");
+        while(a < n){
+            console.log(a);
+            temp = a + b;
+            a = b;
+            b = temp; 
+        }
+        }
+
+        function fibonacciEvenNumbers() {
+        let a = 0;
+        let b = 1;
+        let n = prompt("Enter the numbers you need in  Fibonnaci series");
+        let count = 0; 
+        while(count < n){
+            if(a % 2 === 0)
+            {
+                console.log(a);
+            }
+            temp = a + b;
+            a = b;
+            b = temp; 
+            count++; 
+        }
+        }
+
+        function fibonacciSumUp() {
+        let a = 0;
+        let b = 1;
+        let n = prompt("Enter the numbers you need in  Fibonnaci series");
+        let count = 0;
+        let sum = 0; 
+        while(count < n){
+            sum = sum + a;
+            temp = a + b;
+            a = b;
+            b = temp; 
+            count++; 
+        }
+        console.log(sum); 
+        }
+
+        function fibonacciIsNumberPartOf() {
+        let a = 0;
+        let b = 1;
+        let n = prompt("Enter the which you need to check if it Fibonaci number or not");
+        let isFibonaciflag = false; 
+        while(a <= n){
+            if (a == n){
+            console.log("The Number " + n + " is a Fibonaci number")
+            isFibonaciflag = false; 
+            }
+            else{
+            isFibonaciflag = true; 
+            }
+            temp = a + b;
+            a = b;
+            b = temp; 
+        }
+        if(isFibonaciflag){
+            console.log("The Number " + n + " is not a Fibonaci number")
+        }
+        }
+
     </script>
 </body>
 </html>
+
