@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Nucamp",
+        "number_of_employees": 150,
+        "CEO": "Ludo Fourrage",
+        "glassdoorRating": 5.0
+     },
+     {
+        "name": "Small startup",
+        "number_of_employees": 5,
+        "CEO": null,
+        "glassdoorRating": 4.7
+     }
+]
