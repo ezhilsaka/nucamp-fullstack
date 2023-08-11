@@ -60,3 +60,17 @@ const rabbit = {
   classroom.removeStudent("John"); 
   classroom.removeStudent("Nancy");
   console.log("The students in a class room are", classroom.studentName); 
+
+  const pet = {
+    name: "Buddy",
+    age: 3,
+    type: "dog"
+  };
+  
+  function describePet(pet) {
+    //return a string that uses a template literal to string together all of a pet's properties into one descriptive sentence.
+    console.log(`${pet.name} is a ${pet.age}-Year-old ${pet.type}.`);
+  }
+  
+  console.clear();
+  console.log(describePet(pet));
