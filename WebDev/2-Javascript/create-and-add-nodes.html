@@ -27,6 +27,27 @@
             const parentNode = document.getElementById('secondP');
             parentNode.appendChild(newText);
         }
+/*         function handleClick(event) {
+            event.stopPropagation();
+            let node = event.target;
+            let thisPath = node.nodeName;
+            while (node.parentNode) {
+                node = node.parentNode;
+                thisPath = node.nodeName + " > " + thisPath;
+            }
+            alert(thisPath);
+        }
+
+        function attachHandler(node) {
+            if (node === null) {
+                return;
+            }
+            node.onclick = handleClick;
+            for (child of node.childNodes) {
+                attachHandler(child);
+            }
+        }
+        attachHandler(document.body); */
     </script>
 </body>
 </html>
