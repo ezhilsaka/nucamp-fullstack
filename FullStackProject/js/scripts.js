@@ -40,7 +40,7 @@ fetchWeather();
 
 function displayWeather(data) {
   
-  const temperature = data.main.temp;
+  const temperature = data.main.temp + `\u00B0`;
   const tempDescription =  data.weather[0].description;
   const tempIcon = data.weather[0].icon;
  
