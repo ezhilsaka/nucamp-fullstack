@@ -7,9 +7,16 @@
 </head>
 <body>
     <h1>Trivia Game</h1>
-    <div id="question">Click "New Question" to start the game</div>
+    <h5>Rules of the game:</h5>
+    <ul>
+        <li>Once the Start Game button is clicked the game will start.</li>
+        <li>The next question will come in 3 mins interval, once the game is started</li>
+        <li>Total number of question for each game is 10</li>
+    </ul>
+    <div id="question">Your Question will come here once the game is started</div>
     <input id="answer" type="text" placeholder="Your answer here">
-    <button id="questionBtn">New Question</button>
+    <br><br>
+    <button id="questionBtn">Start Game</button>
     <button id="answerBtn">Submit Answer</button>
     <div id="feedback"></div>
     <script src="questions.js"></script> <!-- Link to your JSON data -->

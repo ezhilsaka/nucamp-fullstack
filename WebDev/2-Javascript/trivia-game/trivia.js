@@ -4,6 +4,8 @@ const feedbackDiv = document.getElementById('feedback');
 const newQuestionButton = document.getElementById('questionBtn');
 const submitAnswerButton = document.getElementById('answerBtn'); 
 let currentQuestion = "";
+let gameQuestion = 1; 
+let score = 0; 
 
 function getTriviaQuestion(){
     return new Promise((resolve, reject) => {
@@ -21,16 +23,17 @@ function getTriviaQuestion(){
 }
 
 function displayQuestion(triviaQuestion){
-    questionDiv.textContent = triviaQuestion.question;
+    questionDiv.textContent = `Your ${gameQuestion}st question is: ${triviaQuestion.question}`;
     answerDiv.value = "";
     feedbackDiv.textContent = "";
+    gameQuestion++; 
 }
 
 newQuestionButton.addEventListener('click', () => {
     getTriviaQuestion().then((curQuestion) => {
     currentQuestion = curQuestion;
     displayQuestion(currentQuestion);
-}).catch((error) => {
+    }).catch((error) => {
     alert(error);
 })
 });
@@ -40,11 +43,25 @@ submitAnswerButton.addEventListener('click', () => {
     let feedbackMessage;
     if(userAnswer === currentQuestion.answer.toLowerCase()){
         feedbackDiv.style.color = 'green';
-        feedbackMessage = 'Your answer is correct';
+        feedbackMessage = 'Your answer is correct. Next Question will display in 3 mins';
+        score = score + 10; 
     }
     else{
         feedbackDiv.style.color = 'red';
-        feedbackMessage = 'Your answer is not correct';
+        feedbackMessage = 'Your answer is not correct. Next Question will display in 3 mins';
     }
-    feedbackDiv.textContent = feedbackMessage; 
+    feedbackDiv.textContent = feedbackMessage;
+    if(gameQuestion <= 10){
+        setTimeout(() => newQuestionButton.click(), 3000);
+    }
+    else{
+        alert(`Game Over. Your score for this game is ${score}.`);
+        quitGame(); 
+    }
+    
 });
+
+function quitGame(){
+    newQuestionButton.removeEventListener("click", getTriviaQuestion); 
+    newQuestionButton.style.display = "block"; 
+}
