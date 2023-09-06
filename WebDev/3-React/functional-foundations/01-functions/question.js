@@ -10,4 +10,11 @@ const saySomethingAndReact = (msg = 'you forgot to submit a message') => {
 };
 
 // add the inputs here
-saySomethingAndReact();
+
+//first way of invoking the function
+
+//const withReaction = saySomethingAndReact(message);
+//withReaction(surprisedReaction); 
+
+//second way of invoking the function
+saySomethingAndReact(message)(surprisedReaction); 
