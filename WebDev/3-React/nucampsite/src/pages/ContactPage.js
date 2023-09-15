@@ -1,5 +1,9 @@
+import SubHeader from "../components/SubHeader";
+
 const ContactPage = () => {
-    return <div>ContactPage</div>;
+    return (
+        <SubHeader current='Contact' />
+       );
 };
 
 export default ContactPage; 
