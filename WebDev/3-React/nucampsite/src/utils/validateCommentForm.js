@@ -1,8 +1,9 @@
 export const validateCommentForm = (values) => {
     const errors = {};
 
-    if(!values.rating){
+    if(typeof(values.rating) === 'undefined' || values.rating === 'Select...'){
         errors.rating = "Required";
+        console.log(values.rating);
     }
 
     if(values.author.length < 2){

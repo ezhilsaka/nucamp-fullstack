@@ -19,7 +19,7 @@ const CommentForm = ( {campsiteId} ) => {
     
     return (
         <>
-            <Button outline='' onClick = {() => setModalOpen(true)}>
+            <Button outline onClick = {() => setModalOpen(true)}>
                 <i className='fa fa-pencil fa-lg' /> Add Comment
             </Button>
             <Modal isOpen={modalOpen}>
