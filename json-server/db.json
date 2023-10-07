@@ -193,6 +193,22 @@
       "text": "The photos don't do justice to the beauty of this place.",
       "author": "Minae Lee",
       "date": "2019-02-18T18:12Z"
+    },
+    {
+      "campsiteId": 0,
+      "rating": "5",
+      "author": "Ezhil",
+      "text": "testing",
+      "date": "2023-10-07T17:33:56.887Z",
+      "id": 20
+    },
+    {
+      "campsiteId": 0,
+      "rating": "4",
+      "author": "we",
+      "text": "testooo",
+      "date": "2023-10-07T17:37:18.973Z",
+      "id": 21
     }
   ],
   "partners": [
