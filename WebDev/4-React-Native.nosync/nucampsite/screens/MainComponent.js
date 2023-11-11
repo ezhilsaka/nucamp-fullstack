@@ -1,5 +1,5 @@
 import DirectoryScreen from './DirectoryScreen';
-import { Image, Text, Platform, StyleSheet,View } from "react-native";
+import { Image, Text, Platform, StyleSheet,View, Alert, ToastAndroid } from "react-native";
 import Constants  from "expo-constants";
 import CampsiteInfoScreen from "./CampsiteInfoScreen";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -18,6 +18,8 @@ import { fetchPromotions } from '../features/promotions/promotionsSlice';
 import { fetchComments } from '../features/comments/commentsSlice';
 import FavoriteScreen from './FavoriteScreen';
 import LoginScreen from './LoginScreen';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import NetInfo from '@react-native-community/netinfo';
 
 const Drawer = createDrawerNavigator();
 
@@ -147,10 +149,16 @@ const LoginNavigator = () => {
             <Stack.Screen 
                 name = 'Login'
                 component={LoginScreen}
-                options = {({ navigation }) => ({
+                options = {({ navigation, route }) => ({
+                    headerTitle: getFocusedRouteNameFromRoute(route),
                     headerLeft: () => (
                         <Icon 
-                            name='sign-in'
+                            name={
+                                getFocusedRouteNameFromRoute(route) === 
+                                'Register' 
+                                    ? 'user-plus' 
+                                    : 'sign-in'
+                            }
                             type='font-awesome'
                             iconStyle={styles.stackIcon}
                             onPress={() => navigation.toggleDrawer()}
@@ -219,6 +227,47 @@ const Main = () => {
         dispatch(fetchComments());
     }, [dispatch]);
    
+    useEffect(() => {
+        NetInfo.fetch().then((connectionInfo) => {
+            Platform.OS === 'ios'
+                ? Alert.alert('Initial Network Connectivity Type:', connectionInfo.type)
+                : ToastAndroid.show(
+                    'Initial Network Connectivity Type:' + connectionInfo.type, ToastAndroid.LONG
+                );
+        });
+
+        const unsubscribeNetInfo = NetInfo.addEventListener(
+            (connectionInfo) => {
+                handleConnectivityChange(connectionInfo);
+            }
+        )
+        
+        return unsubscribeNetInfo; 
+
+    }, []);
+    
+    const handleConnectivityChange = (connectionInfo) => {
+        let connectionMsg = 'You are not connected to an active network.';
+        switch(connectionInfo.type) {
+            case 'none':
+                connectionMsg = 'No network connection is active.';
+                break;
+            case 'unknown':
+                connectionMsg = 'The network connection state is now unknown.';
+                break;
+            case 'cellular':
+                connectionMsg = 'You are now connected to a cellular network';
+                break;
+            case 'wifi':
+                connectionMsg = 'You are now connected to a WiFi network.';
+                break;
+        }
+
+        Platform.OS === 'ios'
+            ? Alert.alert('Connection change:', connectionMsg)
+            : ToastAndroid.show(connectionMsg, ToastAndroid.LONG);
+    }
+
     return (
         <View style={{flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight}}>
             <Drawer.Navigator
