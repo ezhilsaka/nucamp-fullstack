@@ -1,8 +1,6 @@
-/* const rect = {
-    perimeter: (x,y) => 2 * (x + y),
-    area: (x, y) => x* y
-}; */
-const rect = require('./rectangle'); 
+//const rect = require('./rectangle_copy'); 
+
+import rect from "./rectangle_copy";
 
 function solveRect(l, w) {
     console.log(`Solving for rectangle with dimensions: ${l}, ${w}`);
