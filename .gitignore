@@ -400,3 +400,4 @@ FodyWeavers.xsd
 #mac os related
 .DS_Store
 .DS_Store?
+mongodb/
